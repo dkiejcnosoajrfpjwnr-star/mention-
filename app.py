@@ -78,22 +78,28 @@ def unknown_command(update, context):
                              text="Sorry, I didn't understand that command.")
 
 
-updater = Updater(token=TOKEN, use_context=True)
-dispatcher = updater.dispatcher
+if __name__ == '__main__':
+    print("🤖 Bot is starting...")
+    print(f"Token loaded: {bool(TOKEN)}")
+    
+    updater = Updater(token=TOKEN, use_context=True)
+    dispatcher = updater.dispatcher
 
-handlers = [
-    CommandHandler('in', in_command),
-    CommandHandler('all', all_command),
-    CommandHandler('out', out_command),
-    CommandHandler('start', start_command),
-    CommandHandler('stats', stats_command),
-    MessageHandler(Filters.command, unknown_command),
-]
+    handlers = [
+        CommandHandler('in', in_command),
+        CommandHandler('all', all_command),
+        CommandHandler('out', out_command),
+        CommandHandler('start', start_command),
+        CommandHandler('stats', stats_command),
+        MessageHandler(Filters.command, unknown_command),
+    ]
 
-for handler in handlers:
-    dispatcher.add_handler(handler)
+    for handler in handlers:
+        dispatcher.add_handler(handler)
 
-updater.start_polling()
-updater.idle()
+    print("✅ Bot started successfully!")
+    print("📱 Waiting for messages...")
+    updater.start_polling()
+    updater.idle()
 
-db.close()
+    db.close()
