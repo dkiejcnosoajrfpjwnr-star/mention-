@@ -83,28 +83,28 @@ python app.py
 
 #### مشاهدة السجلات:
 ```bash
-docker logs -f mention-bot
+docker logs -f mention-all-bot
 ```
 
 #### إيقاف البوت:
 ```bash
 docker-compose down
 # أو
-docker stop mention-bot
+docker stop mention-all-bot
 ```
 
 #### إعادة تشغيل:
 ```bash
 docker-compose restart
 # أو
-docker restart mention-bot
+docker restart mention-all-bot
 ```
 
 #### حذف البوت:
 ```bash
 docker-compose down -v
 # أو
-docker rm -f mention-bot
+docker rm -f mention-all-bot
 ```
 
 ---
@@ -115,7 +115,7 @@ docker rm -f mention-bot
 ✅ تأكد من نسخ Token بشكل صحيح من @BotFather
 
 ### المشكلة: "البوت لا يرد"
-✅ تحقق من السجلات: `docker logs mention-bot`
+✅ تحقق من السجلات: `docker logs mention-all-bot`
 ✅ تأكد من أن اتصالك بالإنترنت يعمل
 
 ### المشكلة: "خطأ في Database"

@@ -1,52 +1,128 @@
-# mention-all-bot
+# Mention-All-Bot 🚀
 
-mention-all-bot is a telegram bot that helps to mention all users in a group.
+بوت تيليجرام ذكي يساعدك على ذكر جميع أعضاء المجموعة بسهولة!
 
-## Usage
+**A smart Telegram bot that helps you mention all group members easily!**
 
-1. Use [hosted](https://t.me/mention_all_the_bot?startgroup) or host yourself
+---
 
-1. Add to your group
+## ✨ المميزات | Features
 
-1. Everyone who wants to receive notifications opts-in using /in
+✅ ذكر جميع الأعضاء المسجلين بأمر واحد  
+✅ تسجيل الدخول والخروج بسهولة  
+✅ إحصائيات المستخدمين والمجموعات  
+✅ دعم مجموعات متعددة  
+✅ محفوظ الرسائل والبيانات  
 
-1. Now you can call everyone with /all
+---
 
-Commands:
+## 🚀 البدء السريع | Quick Start
 
-```
-/start - Display help text
-/in - Opt-in to receive mentions
-/out - Opt-out of receiving mentions
-/all - Mention all opted-in users
-/stats - Display bot stats
-```
+### الطريقة 1: Docker Compose (الأسهل)
+```bash
+# استنسخ المشروع
+git clone https://github.com/dkiejcnosoajrfpjwnr-star/mention-.git
+cd mention-
 
-## Installation
+# أنشئ ملف البيئة
+cp .env.example .env
 
-`docker-compose.yml`:
-```yaml
-services:
-  app:
-    image: ghcr.io/pischule/mention-all-bot:master
-    restart: always
-    environment:
-      TGBOT_TOKEN: "token_example"
-      DB_CONNSTRING : "host=db port=5432 dbname=postgres user=postgres password=password_example"
-  db:
-    image: postgres
-    restart: always
-    environment:
-      POSTGRES_PASSWORD: "password_example"
-    volumes:
-      - postgres-data:/var/lib/postgresql/data
-volumes:
-  postgres-data:
+# عدّل Token (افتح .env وضع Token من @BotFather)
+nano .env
+
+# شغل البوت
+docker-compose up -d
 ```
 
-```shell
-docker compose up -d
+### الطريقة 2: Docker البسيط
+```bash
+docker run -d \
+  --name mention-bot \
+  -e TGBOT_TOKEN="YOUR_TOKEN_HERE" \
+  --restart always \
+  -v $(pwd)/database.db:/app/database.db \
+  -v $(pwd)/logs:/app/logs \
+  ghcr.io/dkiejcnosoajrfpjwnr-star/mention-all-bot:master
 ```
 
-## License
-GNU GPLv3
+### الطريقة 3: محلي (للتطوير)
+```bash
+# ثبت المتطلبات
+pip install -r requirements.txt
+
+# شغل البوت
+export TGBOT_TOKEN="YOUR_TOKEN_HERE"
+python app.py
+```
+
+---
+
+## 📝 أوامر البوت | Bot Commands
+
+| الأمر | الوصف |
+|------|--------|
+| `/start` | عرض رسالة الترحيب |
+| `/in` | تسجيل الدخول (للحصول على mentions) |
+| `/all` | ذكر جميع الأعضاء المسجلين |
+| `/out` | الخروج من النظام |
+| `/stats` | عرض الإحصائيات |
+
+---
+
+## 🛠️ المتطلبات | Requirements
+
+- Docker & Docker Compose
+- Python 3.12+ (للتشغيل المحلي)
+- Telegram Bot Token من @BotFather
+
+---
+
+## 📊 البيانات والسجلات | Data & Logs
+
+- 📁 `database.db` - قاعدة البيانات (SQLite)
+- 📝 `logs/` - سجلات التشغيل
+
+---
+
+## 🐛 استكشاف الأخطاء | Troubleshooting
+
+### البوت لا يستجيب
+```bash
+# افحص السجلات
+docker logs -f mention-all-bot
+
+# تأكد من صحة Token
+# تحقق من الاتصال بالإنترنت
+```
+
+### مشكلة في البيانات
+```bash
+# احذف قاعدة البيانات والبدء من جديد
+rm database.db
+docker-compose restart
+```
+
+---
+
+## 📜 الترخيص | License
+
+GNU General Public License v3.0
+
+---
+
+## 👨‍💻 التطوير | Development
+
+```bash
+# نسخ المتطلبات
+pip install -r requirements.txt
+
+# تشغيل البوت محلياً
+python app.py
+
+# مراقبة السجلات
+tail -f logs.log
+```
+
+---
+
+**استمتع بـ Mention-All-Bot! 🎉**
